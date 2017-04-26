@@ -27,5 +27,14 @@ module.exports = (app) => {
     app.get('/user/details', userController.details);
     app.post('/', homeController.index);
 
+    app.get('/user/help', userController.helpGet);
+    app.post('/user/help', userController.helpPost);
+
+    app.get('/user/ourProject', userController.ourProjectGet);
+    app.post('/user/ourProject', userController.ourProjectPost);
+
+
+
+
 };
 
