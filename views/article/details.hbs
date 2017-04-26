@@ -2,15 +2,43 @@
     <div class="row">
         <div class="col-md-12">
             <article>
-                <header>
-                    <h2>{{title}}</h2>
-                </header>
-
-                <p>
-                    {{content}}
+                <p style="font-size: 200% ">
+                    <span style="border: groove "  >Title:   {{title}}</span>
                 </p>
 
+
+                <p style="font-size: 150% ">
+                    <span style="border: groove "  >Author: {{bookAuthor}}  </span>
+
+                </p>
+
+                <p style="font-size: 150% ">
+                    <span style="border: groove "  >Signature:    {{signature}} </span>
+
+                </p>
+
+                <p style="font-size: 150% ">
+                    <span style="border: groove "  >Year:   {{year}}  </span>
+
+                </p>
+                <p style="font-size: 150% ">
+                    <span style="border: groove "  >Genre:  {{genre}}   </span>
+
+                </p>
+
+
+
                 <object width="1200" height="1200" data="{{musicPath}}" alt="image"></object>
+
+                <p style="font-size: 150% ">
+                    <span style="text-align: center"  >Summary:   {{content}}</span>
+
+                </p>
+                <p style="font-size: 150% ">
+                    <span style="border: aquamarine "  >Rating:  {{comments}}   </span>
+
+                </p>
+
 
                 <small class="author">
                     {{author.fullName}}
@@ -18,6 +46,7 @@
 
                 <footer>
                     <div class="pull-right">
+
                         <a class="btn btn-success btn-xs" href="/article/edit/{{id}}">Edit &raquo;</a>
                         <a class="btn btn-danger btn-xs" href="/article/delete/{{id}}">Delete &raquo;</a>
                         <a class="btn btn-default btn-xs" href="/">Back &raquo;</a>

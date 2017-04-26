@@ -16,6 +16,7 @@
 body {
     padding-top: 70px;
     padding-bottom: 20px;
+    background-image: url("http://ichef.bbci.co.uk/wwfeatures/wm/live/1280_640/images/live/p0/2v/dp/p02vdpfn.jpg");
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -36,6 +37,7 @@ input,
 select,
 textarea {
     max-width: 280px;
+    background-color: transparent;
 }
 
 
@@ -5854,7 +5856,9 @@ button.list-group-item-danger.active:focus {
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: rgba(255,255,255,0.5);
 }
+
 .well blockquote {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
