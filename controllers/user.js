@@ -1,5 +1,8 @@
 const User = require('mongoose').model('User');
+const Role = require('mongoose').model('Role');
 const encryption = require('./../utilities/encryption');
+const mongoose = require('mongoose');
+const Article = mongoose.model('Article');
 
 module.exports = {
     registerGet: (req, res) => {
@@ -24,24 +27,45 @@ module.exports = {
                 let salt = encryption.generateSalt();
                 let passwordHash = encryption.hashPassword(registerArgs.password, salt);
 
-                let userObject = {
-                    email: registerArgs.email,
-                    passwordHash: passwordHash,
-                    fullName: registerArgs.fullName,
-                    salt: salt
-                };
+                let roles = [];
+                Role.findOne({name: 'User'}).then(role =>{
+                     roles.push(role.id);
 
-                User.create(userObject).then(user => {
-                    req.logIn(user, (err) => {
-                        if (err) {
-                            registerArgs.error = err.message;
-                            res.render('user/register', registerArgs);
-                            return;
-                        }
+                    let userObject = {
+                        email: registerArgs.email,
+                        passwordHash: passwordHash,
+                        fullName: registerArgs.fullName,
+                        maleOrFemale:registerArgs.maleOrFemale,
+                        birth:registerArgs.birth,
+                        salt: salt,
+                        roles: roles
+                    };
+                    User.create(userObject).then(user => {
+                        role.users.push(user.id);
+                        role.save(err=>{
+                            if(err){
+                               res.render('user/register', {error: err.message})
+                            }else{
+                                req.logIn(user, (err) => {
+                                    if (err) {
+                                        registerArgs.error = err.message;
+                                        res.render('user/register', registerArgs);
+                                        return;
+                                    }
 
-                        res.redirect('/');
+                                    res.redirect('/');
+                                })
+
+                            }
+                        });
+
+
                     })
-                })
+                });
+
+
+
+
             }
         })
     },
@@ -62,7 +86,8 @@ module.exports = {
 
             req.logIn(user, (err) => {
                 if (err) {
-                    res.render('/user/login', {error: err.message});
+                    console.log(err);
+                    res.redirect('/user/login', {error: err.message});
                     return;
                 }
 
@@ -86,7 +111,33 @@ module.exports = {
             res.render('home/index');
 
         res.redirect('/');
-    }
+    },
 
+    helpGet: (req, res) =>{
+        res.render('user/help')
+    },
+    helpPost: (req, res) =>{
+        res.render('user/help')
+    },
+
+    booklistGet: (req, res) =>{
+       // res.render('user/booklist')
+        Article.find({}).limit(6).populate('author').then(articles => {
+            res.render('user/booklist',{articles: articles});
+        })
+    },
+    booklistPost: (req, res) =>{
+        // res.render('user/booklist')
+        Article.find({}).limit(6).populate('author').then(articles => {
+            res.render('user/booklist',{articles: articles});
+        })
+    },
+
+    ourProjGet: (req, res) =>{
+        res.render('user/ourProject')
+    },
+    ourProjPost: (req, res) =>{
+        res.render('user/ourProject')
+    },
 
 };
