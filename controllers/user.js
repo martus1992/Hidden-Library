@@ -1,6 +1,7 @@
 const User = require('mongoose').model('User');
 const Role = require('mongoose').model('Role');
 const encryption = require('./../utilities/encryption');
+
 const mongoose = require('mongoose');
 const Article = mongoose.model('Article');
 
@@ -121,23 +122,23 @@ module.exports = {
     },
 
     booklistGet: (req, res) =>{
-       // res.render('user/booklist')
         Article.find({}).limit(6).populate('author').then(articles => {
             res.render('user/booklist',{articles: articles});
         })
     },
     booklistPost: (req, res) =>{
-        // res.render('user/booklist')
         Article.find({}).limit(6).populate('author').then(articles => {
             res.render('user/booklist',{articles: articles});
         })
     },
 
-    ourProjGet: (req, res) =>{
+
+    ourProjectGet: (req, res) =>{
         res.render('user/ourProject')
     },
-    ourProjPost: (req, res) =>{
+
+    ourProjectPost: (req, res) =>{
         res.render('user/ourProject')
-    },
+    }
 
 };

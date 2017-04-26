@@ -2,18 +2,64 @@
     <div class="well">
         <form class="form-horizontal" method="POST" action="/article/edit/{{id}}">
             <fieldset>
-                <legend>Edit Article</legend>
+                <legend>Edit Book</legend>
 
                 <div class="form-group">
-                    <label class="col-sm-4 control-label" for="articleTitle">Article Title</label>
+                    <label class="col-sm-4 control-label" for="articleTitle">Book Title</label>
                     <div class="col-sm-4 ">
                         <input type="text" class="form-control" id="articleTitle" placeholder="Article Title" value="{{title}}" name="title" required >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="articleTitle">Book Author</label>
+                    <div class="col-sm-4 ">
+                        <input type="text" class="form-control" id="bookAuthor" placeholder="Book Author" value="{{bookAuthor}}" name="bookAuthor" required >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="articleTitle">Signature</label>
+                    <div class="col-sm-4 ">
+                        <input type="text" class="form-control" id="signature" placeholder="Signature" value="{{signature}}" name="signature" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="articleTitle">Year</label>
+                    <div class="col-sm-4 ">
+                        <input type="text" class="form-control" id="year" placeholder="Year" value="{{year}}" name="year" required >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="genre">Genre</label>
+                    <div class="col-sm-6" >
+                        <select class="form-control" id="genre" rows="5" value="{{genre}}" name="genre">
+                            <option value="Fiction">Fiction</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Horror">Horror</option>
+                            <option value="Romance Novel">Romance Novel</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Epic">Epic</option>
+                            <option value="Saga">Saga</option>
+
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 control-label" for="articleContent">Content</label>
                     <div class="col-sm-6">
                         <textarea class="form-control" id="articleContent" rows="5" name="content" required>{{content}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="articleComments">Rating</label>
+                    <div class="col-sm-6" >
+                        <select class="form-control" id="articleComments" rows="5" value="{{comments}}" name="comments">
+                            <option value="Excellent">Excellent</option>
+                            <option value="Very good">Very good</option>
+                            <option value="Good">Good</option>
+                            <option value="Poor">Poor</option>
+
+                        </select>
                     </div>
                 </div>
 
