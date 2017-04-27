@@ -2,27 +2,34 @@
     <div class="well">
     <div class="row">
         <div class="col-md-12">
-            <article>
-                <header>
-                    <h2>{{title}}</h2>
-                </header>
 
-                <p>
-                    {{content}}
-                </p>
 
-                <small class="author">
-                    {{author.fullName}}
-                </small>
+
+               <p>
+                   <img src="http://www.adaptationclearinghouse.org/images/pic.png" style="width:150px;height:150px;">
+               </p>
+
+                <h2>
+                   Name: {{user.fullName}}
+                </h2>
+            <h2>
+                Email: {{user.email}}
+            </h2>
+            <h2>
+                 Gender: {{user.maleOrFemale}}
+            </h2>
+            <h2>
+                Birth (Year): {{user.birth}}
+            </h2>
+
+
+
+
 
                 <footer>
-                    <div class="pull-right">
-                        <a class="btn btn-success btn-xs" href="/article/edit/{{id}}">Edit &raquo;</a>
-                        <a class="btn btn-danger btn-xs" href="/article/delete/{{id}}">Delete &raquo;</a>
-                        <a class="btn btn-default btn-xs" href="/">Back &raquo;</a>
-                    </div>
+
                 </footer>
-            </article>
+
         </div>
     </div>
     </div>

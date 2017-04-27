@@ -3,7 +3,7 @@ const Role = require('mongoose').model('Role');
 const encryption = require('./../utilities/encryption');
 
 const mongoose = require('mongoose');
-const Article = mongoose.model('Article');
+const Book = mongoose.model('Book');
 
 module.exports = {
     registerGet: (req, res) => {
@@ -30,7 +30,7 @@ module.exports = {
 
                 let roles = [];
                 Role.findOne({name: 'User'}).then(role =>{
-                     roles.push(role.id);
+                    roles.push(role.id);
 
                     let userObject = {
                         email: registerArgs.email,
@@ -45,7 +45,7 @@ module.exports = {
                         role.users.push(user.id);
                         role.save(err=>{
                             if(err){
-                               res.render('user/register', {error: err.message})
+                                res.render('user/register', {error: err.message})
                             }else{
                                 req.logIn(user, (err) => {
                                     if (err) {
@@ -109,7 +109,7 @@ module.exports = {
     },
     details:(req, res) =>{
 
-            res.render('home/index');
+        res.render('home/index');
 
         res.redirect('/');
     },
@@ -122,13 +122,13 @@ module.exports = {
     },
 
     booklistGet: (req, res) =>{
-        Article.find({}).limit(6).populate('author').then(articles => {
-            res.render('user/booklist',{articles: articles});
+        Book.find({}).limit(6).populate('author').then(books => {
+            res.render('user/booklist',{books: books});
         })
     },
     booklistPost: (req, res) =>{
-        Article.find({}).limit(6).populate('author').then(articles => {
-            res.render('user/booklist',{articles: articles});
+        Book.find({}).limit(6).populate('author').then(books => {
+            res.render('user/booklist',{books: books});
         })
     },
 
@@ -139,6 +139,15 @@ module.exports = {
 
     ourProjectPost: (req, res) =>{
         res.render('user/ourProject')
+    },
+
+    detailsGet: (req, res) =>{
+        res.render('user/details')
+    },
+
+    detailsPost: (req, res) =>{
+        res.render('user/details')
     }
+
 
 };

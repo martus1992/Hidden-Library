@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const Article = mongoose.model('Article');
+const Book = mongoose.model('Book');
 
 module.exports = {
-  index: (req, res) => {
-      res.render('home/index');
-  }
+    index: (req, res) => {
+        res.render('home/index');
+    }
 };
