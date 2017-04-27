@@ -1,0 +1,62 @@
+<div class="container body-content">
+    <div class="row">
+        <div class="col-md-12">
+            <article>
+                <p style="font-size: 200% ">
+                    <span style="" >Title:   {{title}}</span>
+                </p>
+
+
+                <p style="font-size: 150% ">
+                    <span style=""  >Author: {{bookAuthor}}  </span>
+
+                </p>
+
+                <p style="font-size: 150% ">
+                    <span style=""  >Signature:    {{signature}} </span>
+
+                </p>
+
+                <p style="font-size: 150% ">
+                    <span style=""  >Year:   {{year}}  </span>
+
+                </p>
+                <p style="font-size: 150% ">
+                    <span style=""  >Genre:  {{genre}}   </span>
+
+                </p>
+                <p style="font-size: 150% ">
+                    <span style=""  >Format:  {{format}}   </span>
+
+                </p>
+
+
+
+                <object width="1200" height="1200" data="{{musicPath}}" alt="image"></object>
+
+                <p style="font-size: 150% ">
+                    <span style="text-align: center"  >Summary:   {{content}}</span>
+
+                </p>
+                <p style="font-size: 150% ">
+                    <span style="border: aquamarine "  >Rating:  {{comments}}   </span>
+
+                </p>
+
+
+                <small class="author">
+                    {{author.fullName}}
+                </small>
+
+                <footer>
+                    <div class="pull-right">
+
+                        <a class="btn btn-success btn-xs" href="/book/edit/{{id}}">Edit &raquo;</a>
+                        <a class="btn btn-danger btn-xs" href="/book/delete/{{id}}">Delete &raquo;</a>
+                        <a class="btn btn-default btn-xs" href="/user/booklist">Back &raquo;</a>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </div>
+</div>

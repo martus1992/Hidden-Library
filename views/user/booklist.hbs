@@ -1,7 +1,7 @@
 <div class="container body-content">
     <div class="well">
         <div class="row">
-            {{#each articles}}
+            {{#each books}}
                 <div class="col-md-6" >
                     <article>
                         <header>
@@ -17,8 +17,8 @@
                             {{this.author.fullName}}
                         </small>
                         <h3>
-                            <a href="/article/details/{{this.id}}">
-                            <img src="http://weknowyourdreams.com/images/book/book-03.jpg" alt="Mountain View" style="width:234px;height:178px;"></a>
+                            <a href="/book/details/{{this.id}}">
+                            <img src="http://weknowyourdreams.com/images/book/book-03.jpg" alt="Book" style="width:234px;height:178px;"></a>
                         </h3>
                         <h5>
                             Available format: {{format}}
@@ -29,7 +29,7 @@
 
                             <div class="pull-right">
 
-                                <a class="btn btn-default btn-xs" href="/article/details/{{this.id}}">View details &raquo;</a>
+                                <a class="btn btn-default btn-xs" href="/book/details/{{this.id}}">View details &raquo;</a>
                             </div>
                         </footer>
                     </article>
