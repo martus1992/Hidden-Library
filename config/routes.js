@@ -1,5 +1,5 @@
 const userController = require('./../controllers/user');
-const articleController = require('./../controllers/article');
+const bookController = require('./../controllers/book');
 const homeController = require('./../controllers/home');
 
 module.exports = (app) => {
@@ -13,22 +13,28 @@ module.exports = (app) => {
 
     app.get('/user/logout', userController.logout);
 
-    app.get('/article/create', articleController.createGet);
-    app.post('/article/create', articleController.createPost);
+    app.get('/book/create', bookController.createGet);
+    app.post('/book/create', bookController.createPost);
 
-    app.get('/article/details/:id', articleController.details);
+    app.get('/book/details/:id', bookController.details);
 
-    app.get('/article/edit/:id', articleController.editGet);
-    app.post('/article/edit/:id', articleController.editPost);
 
-    app.get('/article/delete/:id', articleController.deleteGet);
-    app.post('/article/delete/:id', articleController.deletePost);
+    app.get('/book/edit/:id', bookController.editGet);
 
-    app.get('/user/details', userController.details);
-    app.post('/', homeController.index);
+    app.post('/book/edit/:id', bookController.editPost);
+
+    app.get('/book/delete/:id', bookController.deleteGet);
+    app.post('/book/delete/:id', bookController.deletePost);
+
+    app.get('/user/details', userController.detailsGet);
+    app.post('/user/details', userController.detailsPost); //home/index
+
 
     app.get('/user/help', userController.helpGet);
     app.post('/user/help', userController.helpPost);
+
+    app.get('/user/booklist', userController.booklistGet); // Lbrary
+    app.post('/user/booklist', homeController.index);
 
     app.get('/user/ourProject', userController.ourProjectGet);
     app.post('/user/ourProject', userController.ourProjectPost);
@@ -37,4 +43,6 @@ module.exports = (app) => {
 
 
 };
+
+
 
