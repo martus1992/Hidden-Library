@@ -7,9 +7,9 @@ let userSchema = mongoose.Schema( {
         email: {type: String, required: true, unique: true},
         passwordHash: {type: String, required: true},
         fullName: {type: String, required: true},
-        articles: [{ type: ObjectId, ref: 'Article'}],
-        maleOrFemale:{type: String, required: true},
-        birth:{type:String, required: true},
+        books: [{ type: ObjectId, ref: 'Books'}],
+        maleOrFemale:{type: String, required: false},
+        birth:{type:String, required: false},
         roles: [{type: ObjectId, ref: 'Role'}],
         salt: {type: String, required: true},
     }
@@ -23,12 +23,12 @@ userSchema.method ({
 
         return isSamePasswordHash;
     },
-    isAuthor: function(article) {
-        if (!article){
+    isAuthor: function(book) {
+        if (!book){
             return false;
         }
 
-        let isAuthor = article.author.equals(this.id);
+        let isAuthor = book.author.equals(this.id);
 
 
         return isAuthor;
@@ -53,7 +53,7 @@ const User = mongoose.model('User', userSchema);
 module.exports = User;
 
 module.exports.initialize=()=>{
-  let email = 'admin@mysite.com';
+  let email = 'admin@abv.bg';
   User.findOne({email: email}).then(admin => {
       if (admin) {
           return;
@@ -65,12 +65,14 @@ module.exports.initialize=()=>{
           }
           let salt = encryption.generateSalt();
           let passwordHash = encryption.hashPassword('123456', salt);
+          
 
           let adminUser = {
               email: email,
               fullName: 'Admin',
               roles: [role.id],
-              articles: [],
+              books: [],
+
               salt: salt,
               passwordHash: passwordHash
 
